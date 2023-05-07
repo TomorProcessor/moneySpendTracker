@@ -1,6 +1,7 @@
 import './NewExpense.css';
 import './ExpenseForm.css';
 import {useRef, useState} from "react";
+import {DataElement} from "../StoreReducer";
 function NewExpanse() {
     const [showForm, modifyFormVisibilityState] = useState(false);
     const [canAddNew, changeCanAddNew] = useState(false);
@@ -18,7 +19,13 @@ function NewExpanse() {
     }
 
     const handleAddExpenseClick = () => {
-        console.log("add expense");
+        const newExpense: DataElement = {
+            id: Math.random().toString(36).substring(2),
+            title: titleInputRef.current!.value,
+            amount: parseInt(amountInputRef.current!.value),
+            date: new Date(dateInputRef.current!.value)
+        }
+        console.log(newExpense);
     }
 
     const titleInputRef = useRef<HTMLInputElement>(null);
