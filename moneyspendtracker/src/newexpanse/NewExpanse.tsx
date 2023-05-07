@@ -17,6 +17,10 @@ function NewExpanse() {
         changeCanAddNew(inputsAreValid());
     }
 
+    const handleAddExpenseClick = () => {
+        console.log("add expense");
+    }
+
     const titleInputRef = useRef<HTMLInputElement>(null);
     const amountInputRef = useRef<HTMLInputElement>(null);
     const dateInputRef = useRef<HTMLInputElement>(null);
@@ -50,7 +54,7 @@ function NewExpanse() {
                   <label>Date</label>
                   <input type="date" ref={dateInputRef} onChange={handleInputChange}/>
                   <button className="new-expense__actions" onClick={handleCancelClick}>Cancel</button>
-                  <button className="new-expense__actions" disabled={!canAddNew}>Add Expense</button>
+                  <button className="new-expense__actions" disabled={!canAddNew} onClick={handleAddExpenseClick}>Add Expense</button>
               </div>)
           }
       </div>
