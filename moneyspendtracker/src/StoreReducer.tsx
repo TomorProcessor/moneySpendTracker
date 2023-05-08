@@ -20,9 +20,9 @@ export interface DataElement {id: string, title: string, amount: number, date: D
 
 const storeReducer:Reducer<State, Action> = ( state = initialState, action )  => {
     let newElements: Array<DataElement> = [];
-    if (action.type == DELETE_ELEMENT) {
+    if (action.type === DELETE_ELEMENT) {
         for (let i: number = 0; i < state.elements.length; i++) {
-            if ("id" in action && state.elements[i].id != action.id) {
+            if ("id" in action && state.elements[i].id !== action.id) {
                 newElements.push(state.elements[i]);
             }
         }
@@ -32,6 +32,7 @@ const storeReducer:Reducer<State, Action> = ( state = initialState, action )  =>
             newElements.push(action.element);
         }
     }
+    console.log(newElements);
     return {
         elements: newElements
     }

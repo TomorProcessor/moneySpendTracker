@@ -1,10 +1,12 @@
 import './NewExpense.css';
 import './ExpenseForm.css';
 import {useRef, useState} from "react";
-import {DataElement} from "../StoreReducer";
+import {ADD_ELEMENT, DataElement} from "../StoreReducer";
+import {useDispatch} from "react-redux";
 function NewExpanse() {
     const [showForm, modifyFormVisibilityState] = useState(false);
     const [canAddNew, changeCanAddNew] = useState(false);
+    const dispatch = useDispatch();
 
     const handleAddNewClick = () => {
         modifyFormVisibilityState(true);
@@ -25,7 +27,12 @@ function NewExpanse() {
             amount: parseInt(amountInputRef.current!.value),
             date: new Date(dateInputRef.current!.value)
         }
+        dispatch({
+            type: ADD_ELEMENT,
+            element: newExpense
+        })
         console.log(newExpense);
+        modifyFormVisibilityState(false);
     }
 
     const titleInputRef = useRef<HTMLInputElement>(null);
