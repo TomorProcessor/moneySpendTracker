@@ -8,6 +8,7 @@ function ChartBar(parameter: {percent: number, label: string}) {
 
     //run on every percent changes
     useEffect(() => {
+        console.log('charbar', parameter.percent);
         setActualPercent(parameter.percent);
         if (chartBarRef.current) {
             chartBarRef.current.style.height = actualPercent + '%';

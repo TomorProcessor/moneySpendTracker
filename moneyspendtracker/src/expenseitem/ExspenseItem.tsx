@@ -1,4 +1,5 @@
 import './ExpsenseItem.css';
+import '../Card.css';
 import ExpenseDate from "./expensedate/ExpenseDate";
 import {DataElement} from "../StoreReducer";
 import {useEffect, useRef} from "react";
@@ -13,7 +14,7 @@ function ExpenseItem(parameter: {item: DataElement}) {
     });
 
     return (
-        <div className='expense-item'>
+        <div className='expense-item card'>
             <ExpenseDate date={parameter.item.date}/>
             <div className='expense-item__description'>
                 <h2 ref={desciptionRef}>x</h2>
