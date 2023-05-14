@@ -31,7 +31,6 @@ function NewExpanse() {
             type: ADD_ELEMENT,
             element: newExpense
         })
-        console.log(newExpense);
         modifyFormVisibilityState(false);
     }
 

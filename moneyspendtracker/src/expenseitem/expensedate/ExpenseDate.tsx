@@ -11,7 +11,7 @@ function ExpenseDate(parameter: {date: Date}) {
     useEffect(() => {
         if (monthRef.current) monthRef.current.innerText = months[parameter.date.getMonth()] + '';
         if (yearRef.current) yearRef.current.innerText = parameter.date.getFullYear() + '';
-        if (dayRef.current) dayRef.current.innerText = parameter.date.getDay() + '';
+        if (dayRef.current) dayRef.current.innerText = parameter.date.getDate() + '';
     });
 
     return (

@@ -4,21 +4,16 @@ import ExpensesFilter from "../expansesfilter/ExpensesFilter";
 import Chart from "../chart/Chart";
 import store, {DataElement, State} from "../StoreReducer";
 import ExpenseItem from "../expenseitem/ExspenseItem";
-import {useMemo, useState} from "react";
-import {getSortedStoredYears} from "../Helper";
+import {useSelector} from "react-redux";
 
 function Expenses() {
-    const [actSelectedYear, setActSelectedYear] = useState(getSortedStoredYears()[0]);
+    const actSelectedYear = useSelector((state: State) => state.year);
+    const elements = useSelector((state: State) => state.elements); //not use directly, but need to refresh, when elements changed
     const expenses: Array<DataElement> = getExpensesForSelectedYear(actSelectedYear);
-
-    const handleDateSelectChange = useMemo (() => (newDate: number) => {
-        console.log('Expenses handleDateSelectChange');
-        setActSelectedYear(newDate);
-    }, []);
 
     return (
       <div className="expenses card">
-          <ExpensesFilter onSelectChange={handleDateSelectChange}/>
+          <ExpensesFilter />
           <Chart actualYear={actSelectedYear}/>
           {
               expenses.map(

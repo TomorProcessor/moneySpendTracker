@@ -9,9 +9,10 @@ import Expenses from "./expenses/Expenses";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-      <Provider store={store}>
-        <NewExpanse />
-          <Expenses />
-      </Provider>
+    <Provider store={store}>
+        <NewExpanse/>
+        <Expenses />
+    </Provider>
 );

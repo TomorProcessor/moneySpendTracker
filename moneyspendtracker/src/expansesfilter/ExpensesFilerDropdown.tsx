@@ -1,16 +1,21 @@
 import {ChangeEvent} from "react";
-import {getSortedStoredYears} from "../Helper";
+import {getSortedStoredYears, MODIFY_YEAR} from "../StoreReducer";
+import store from "../StoreReducer";
+import {useDispatch} from "react-redux";
 
-function ExpensesFilerDropdown(parameters: {onSelectChange: (newDate: number) => void}) {
+function ExpensesFilerDropdown() {
     const storedYears: Array<number> = getSortedStoredYears();
+    const dispatch = useDispatch();
 
     const handleSelectChange = (event: ChangeEvent) => {
-        console.log('ExpensesFilterDropdown handleSelectOnChange');
-        parameters.onSelectChange(parseInt((event.target as HTMLSelectElement).value));
+        dispatch({
+            type: MODIFY_YEAR,
+            year: parseInt((event.target as HTMLSelectElement).value)
+        })
     }
 
     return (
-        <select onChange={handleSelectChange}>
+        <select onChange={handleSelectChange} value={store.getState().year}>
             {
                 storedYears.map(
                     year => (<option key={Math.random().toString(36).substring(2)}>{year}</option>)

@@ -1,6 +1,6 @@
 import './Chart.css';
 import ChartBar from "./chartbar/ChartBar";
-import {getMaxSpendingStoredYearSpendings, getStoredYearSpendings} from "../Helper";
+import {getMaxSpendingStoredYearSpendings, getStoredYearSpendings} from "../StoreReducer";
 
 function Chart(parameters: { actualYear: number }) {
     const months: Array<string> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', "Dec"];
