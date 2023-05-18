@@ -49,14 +49,18 @@ const storeReducer:Reducer<State, Action> = ( state = initialState, action )  =>
     let selectedYear: number = state.year;
     if (action.type === DELETE_ELEMENT) {
         newElements = [];
+        let actYearFound: boolean = false;
         for (let i: number = 0; i < state.elements.length; i++) {
             if ("id" in action && state.elements[i].id !== action.id) {
+                if (state.elements[i].date.getFullYear() === selectedYear) actYearFound = true;
                 newElements.push(state.elements[i]);
             }
         }
+        if (!actYearFound && newElements.length > 0) selectedYear = newElements[0].date.getFullYear();
     } else if (action.type === ADD_ELEMENT) {
         newElements = [...state.elements];
         if ("element" in action) {
+            if (newElements.length === 0) selectedYear = action.element.date.getFullYear();
             newElements.push(action.element);
         }
     } else if (action.type === MODIFY_YEAR) {
